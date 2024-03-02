@@ -1,0 +1,12 @@
+<%= form_with(url: courses_path, method: "get", local: true) do |form| %>
+    <%= form.text_field :search, value: params[:search] %>
+    <%= form.submit "Search" %>
+  <% end %>
+  
+  <% @courses.each do |course| %>
+    <p>
+      <%= course.title %>
+      <%= link_to 'Enroll', enrollments_path(course_id: course.id), method: :post %>
+    </p>
+  <% end %>
+  
